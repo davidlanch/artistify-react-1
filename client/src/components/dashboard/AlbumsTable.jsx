@@ -56,7 +56,7 @@ this.fetch()
               return (
                 <tr>
                   <td> {element.title}</td>
-                  <td> {element.releaseDate.slice(0,10)}</td>
+                  <td> {element.releaseDate.toString().slice(0,10)}</td>
                   <td>
                     {/* {" "} */}
                     {element.rates.length

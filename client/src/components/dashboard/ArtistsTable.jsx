@@ -56,15 +56,15 @@ this.fetch()
               return (
                 <tr>
                   <td> {element.name}</td>
-                  <td> {element.style}</td>
-                  {/* <td>
+                  <td> {element.style.name}</td>
+                  <td>
                     {element.rates.length
                       ? element.rates.reduce(
                           (acc, current) => acc + current[0].rate,
                           0
                         ) / element.rates.length
                       : "unrated"}
-                  </td> */}
+                  </td>
                   <td>
                     <i className="fas fa-edit" ></i>
                   </td>

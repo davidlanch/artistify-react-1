@@ -9,7 +9,6 @@ import Album from "./views/Album";
 import Contact from "./views/Contact";
 import Dashboard from "./views/Dashboard";
 import NotFound from "./views/NotFound";
-import Table from "./components/dashboard/Table"
 import ArtistsTable from "./components/dashboard/ArtistsTable"
 import AlbumsTable from "./components/dashboard/AlbumsTable";
 import LabelsTable from "./components/dashboard/LabelsTable";
