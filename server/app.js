@@ -44,6 +44,14 @@ app.use(
 // SETUP the CORS rules here !!!
 // ------------------------------
 
+const corsOptions = {
+  origin: [process.env.CLIENT_URL],
+  credentials: true,
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
+
 
 //------------------------------------------
 // Fake Loggedin Users

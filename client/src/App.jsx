@@ -9,6 +9,8 @@ import Album from "./views/Album";
 import Contact from "./views/Contact";
 import Dashboard from "./views/Dashboard";
 import NotFound from "./views/NotFound";
+import Table from "./components/dashboard/Table"
+import ArtistsTable from "./components/dashboard/ArtistsTable"
 // partials
 import HeaderMain from "./components/template/HeaderMain";
 import FooterMain from "./components/template/FooterMain";
@@ -37,6 +39,16 @@ export default function App() {
           <Route path="/albums/:id" component={Album} />
           <Route path="/contact-us" component={Contact} />
           <Route path="/dashboard" component={Dashboard} />
+          <Route path="/admin/artists" component={ArtistsTable}/>
+           <Route path="/admin/albums" render={(props) => {
+            return (<Table {...props} model="albums"/>)
+          }}/>
+           <Route path="/admin/labels" render={(props) => {
+            return (<Table {...props} model="labels"/>)
+          }}/>
+           <Route path="/admin/styles" render={(props) => {
+            return (<Table {...props} model="styles"/>)
+          }}/>
 
           {/* handling 404 pages (if no matched route above this component triggers) */}
           <Route path="*" component={NotFound} />
