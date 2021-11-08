@@ -11,6 +11,9 @@ import Dashboard from "./views/Dashboard";
 import NotFound from "./views/NotFound";
 import Table from "./components/dashboard/Table"
 import ArtistsTable from "./components/dashboard/ArtistsTable"
+import AlbumsTable from "./components/dashboard/AlbumsTable";
+import LabelsTable from "./components/dashboard/LabelsTable";
+import StylesTable from "./components/dashboard/StylesTable";
 // partials
 import HeaderMain from "./components/template/HeaderMain";
 import FooterMain from "./components/template/FooterMain";
@@ -40,7 +43,9 @@ export default function App() {
           <Route path="/contact-us" component={Contact} />
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/admin/artists" component={ArtistsTable}/>
-           <Route path="/admin/albums" render={(props) => {
+          <Route path="/admin/albums" component={AlbumsTable}/>
+          <Route path="/admin/labels" component={LabelsTable}/>
+          <Route path="/admin/styles" component={StylesTable}/>           {/* <Route path="/admin/albums" render={(props) => {
             return (<Table {...props} model="albums"/>)
           }}/>
            <Route path="/admin/labels" render={(props) => {
@@ -48,7 +53,7 @@ export default function App() {
           }}/>
            <Route path="/admin/styles" render={(props) => {
             return (<Table {...props} model="styles"/>)
-          }}/>
+          }}/> */}
 
           {/* handling 404 pages (if no matched route above this component triggers) */}
           <Route path="*" component={NotFound} />

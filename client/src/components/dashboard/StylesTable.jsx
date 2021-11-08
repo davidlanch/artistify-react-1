@@ -1,15 +1,13 @@
 import React, { Component } from "react";
 import APIHandler from "../../api/handler";
-import "./../../styles/table.css"
 
-export default class ArtistsTable extends Component {
+export default class StylesTable extends Component {
   state = {
     elements: [],
   };
-  
 
   fetch = () => {
-    APIHandler.get("api/artists")
+    APIHandler.get("api/styles")
       .then((response) => {
         this.setState({
           elements: response.data,
@@ -21,12 +19,13 @@ export default class ArtistsTable extends Component {
         console.error(err);
       });
   }
+
   componentDidMount() {
 this.fetch()
   }
 
   handleDelete = (id) => {
-    APIHandler.delete(`api/artists/${id}`)
+    APIHandler.delete(`api/styles/${id}`)
     .then((response) => {
     this.fetch()
     })
@@ -40,13 +39,14 @@ this.fetch()
     if (!this.state.elements) return <div className="loading">Loading...</div>;
     return (
       <>
-        <h1 className="title medium">Admin Artists + </h1>
+        <h1 className="title medium">Admin Styles + </h1>
         <table className="table">
           <thead>
             <tr>
               <th>name</th>
-              <th>style</th>
-              <th>rates</th>
+              <th>color</th>
+
+    
               <th>edit</th>
               <th>trash</th>
             </tr>
@@ -56,17 +56,9 @@ this.fetch()
               return (
                 <tr>
                   <td> {element.name}</td>
-                  <td> {element.style}</td>
-                  {/* <td>
-                    {element.rates.length
-                      ? element.rates.reduce(
-                          (acc, current) => acc + current[0].rate,
-                          0
-                        ) / element.rates.length
-                      : "unrated"}
-                  </td> */}
+                  <td style={{backgroundColor: element.color}}> </td>
                   <td>
-                    <i className="fas fa-edit" ></i>
+                    <i className="fas fa-edit"></i>
                   </td>
                   <td>
                     <i className="fas fa-times" onClick={() => this.handleDelete(element._id)}></i>
