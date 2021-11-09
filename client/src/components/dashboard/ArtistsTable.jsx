@@ -56,7 +56,7 @@ this.fetch()
               return (
                 <tr>
                   <td> {element.name}</td>
-                  <td> {element.style.name}</td>
+                  <td> <pre>{element.style ? element.style.name : "no style"}</pre></td>
                   <td>
                     {element.rates.length
                       ? element.rates.reduce(
