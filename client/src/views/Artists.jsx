@@ -35,10 +35,10 @@ export default class Artists extends Component {
           {this.state.artists.map((artist) => {
             return (
               <li className="card shadow-box" key={artist._id}>
-                <div
+                {artist.style ? <div
                   className="color"
                   style={{ backgroundColor: artist.style.color }}
-                ></div>
+                ></div> : <div></div>}
                 <Link to={"/artists/" + artist._id} className="title">
                   {artist.name}
                 </Link>

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import APIHandler from "../../api/handler";
 import "./../../styles/table.css"
 
@@ -40,7 +41,11 @@ this.fetch()
     if (!this.state.elements) return <div className="loading">Loading...</div>;
     return (
       <>
-        <h1 className="title medium">Admin Artists + </h1>
+        <h1 className="title medium">Admin Artists
+        <Link  exact to={'/admin/artists/create'}>
+            <p>+</p>
+          </Link>
+           </h1>
         <table className="table">
           <thead>
             <tr>
@@ -66,7 +71,10 @@ this.fetch()
                       : "unrated"}
                   </td>
                   <td>
-                    <i className="fas fa-edit" ></i>
+                  <Link  exact to={'/admin/artists/' + element._id + '/edit'}>
+            <i className="fas fa-edit" ></i>
+          </Link>
+                    
                   </td>
                   <td>
                     <i className="fas fa-times" onClick={() => this.handleDelete(element._id)}></i>
