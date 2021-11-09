@@ -13,6 +13,16 @@ import ArtistsTable from "./components/dashboard/ArtistsTable"
 import AlbumsTable from "./components/dashboard/AlbumsTable";
 import LabelsTable from "./components/dashboard/LabelsTable";
 import StylesTable from "./components/dashboard/StylesTable";
+// forms
+import NewAlbum from "./components/form/NewAlbum.jsx";
+import NewArtist from "./components/form/NewArtist.jsx";
+import NewStyle from "./components/form/NewStyle.jsx";
+import NewLabel from "./components/form/NewLabel.jsx";
+import EditAlbum from "./components/form/EditAlbum.jsx";
+import EditArtist from "./components/form/EditArtist.jsx";
+import EditStyle from "./components/form/EditStyle.jsx";
+import EditLabel from "./components/form/EditLabel.jsx";
+
 // partials
 import HeaderMain from "./components/template/HeaderMain";
 import FooterMain from "./components/template/FooterMain";
@@ -44,8 +54,21 @@ export default function App() {
           <Route path="/admin/artists" component={ArtistsTable}/>
           <Route path="/admin/albums" component={AlbumsTable}/>
           <Route path="/admin/labels" component={LabelsTable}/>
-          <Route path="/admin/styles" component={StylesTable}/>           {/* <Route path="/admin/albums" render={(props) => {
-            return (<Table {...props} model="albums"/>)
+          <Route path="/admin/styles" component={StylesTable}/>         
+          
+          {/* create and edit routes */}
+          <Route path="/admin/albums/create" component={NewAlbum} />
+          <Route path="/admin/artists/create" component={NewArtist} />
+          <Route path="/admin/styles/create" component={NewStyle} />
+          <Route path="/admin/labels/create" component={NewLabel} />
+
+          <Route path="/admin/albums/edit" component={EditAlbum} />
+          <Route path="/admin/artists/edit" component={EditArtist} />
+          <Route path="/admin/styles/edit" component={EditStyle} />
+          <Route path="/admin/labels/edit" component={EditLabel} />
+
+            {/* <Route path="/admin/albums" render={(props) => {
+          return (<Table {...props} model="albums"/>)
           }}/>
            <Route path="/admin/labels" render={(props) => {
             return (<Table {...props} model="labels"/>)
