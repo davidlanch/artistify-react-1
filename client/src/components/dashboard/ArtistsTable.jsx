@@ -59,7 +59,7 @@ this.fetch()
           <tbody>
             {this.state.elements.map((element) => {
               return (
-                <tr>
+                <tr key={element._id}>
                   <td> {element.name}</td>
                   <td> <pre>{element.style ? element.style.name : "no style"}</pre></td>
                   <td>
