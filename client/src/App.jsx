@@ -51,16 +51,16 @@ export default function App() {
           <Route path="/albums/:id" component={Album} />
           <Route path="/contact-us" component={Contact} />
           <Route path="/dashboard" component={Dashboard} />
-          <Route path="/admin/artists" component={ArtistsTable}/>
+          <Route exact path="/admin/artists" component={ArtistsTable}/>
           <Route exact path="/admin/albums" component={AlbumsTable}/>
           <Route exact path="/admin/labels" component={LabelsTable}/>
           <Route exact path="/admin/styles" component={StylesTable}/>         
           
           {/* create and edit routes */}
-          <Route path="/admin/albums/create" component={NewAlbum} />
+          <Route exact path="/admin/albums/create" component={NewAlbum} />
           <Route exact path="/admin/artists/create" component={NewArtist} />
-          <Route path="/admin/styles/create" component={NewStyle} />
-          <Route path="/admin/labels/create" component={NewLabel} />
+          <Route exact path="/admin/styles/create" component={NewStyle} />
+          <Route exact path="/admin/labels/create" component={NewLabel} />
 
           <Route path="/admin/albums/edit" component={EditAlbum} />
           <Route
