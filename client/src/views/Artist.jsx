@@ -1,21 +1,55 @@
 // custom tools
-// import APIHandler from "../api/handler";
+import React, { Component } from "react";
+import APIHandler from "../api/handler";
 import LabPreview from "../components/preview/LabPreview";
+import Comment from "../components/Comment";
 // styles
 import "./../styles/artist.css";
 import "./../styles/comment.css";
 import "./../styles/star.css";
 
-export default function Artists() {
+export default class Artists extends Component {
+  // console.log(props.match.params.id)
+  constructor(props) {
+    super(props); // MANDATORY !!!!
+    this.state = {
+      name: "",
+      style: null,
+      description: "",
+      isBand: "",
+      styles: [],
+    };
+  }
 
-  return (
+  componentDidMount() {
+      APIHandler.get("/api/artists/" + this.props.match.params.id)
+      .then((res) => {
+          console.log("REEES", res)
+        const { name, style, description, isBand } = res.data;
+        this.setState({
+            name,
+            style: res.data.style.name,
+            description,
+            isBand
+        });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
+  render () {
+    console.log("hola quetal", this.props)
+    if ( this.state.name === "") {
+      return <p>loading</p>;
+      
+    }
+    return (
     <>
-      <h1 className="title diy">D.I.Y (Artist)</h1>
+      <h1 className="title">{this.state.name}</h1>
       <p>
-        Use the image below to code the {`<Artist />`} component.
-        <br />
-        This component import child components: {`<Stars />`}, {`<Comments />`}{" "}
-        and {`<Discography />`}
+      music style: {this.state.style}<br/>
+      {this.state.description}
       </p>
 
       <h1 className="title diy">D.I.Y (Stars)</h1>
@@ -47,8 +81,10 @@ export default function Artists() {
       </p>
 
       <LabPreview name="artist"/>
+      <Comment id={this.props.match.params.id}/>
 
      
     </>
   );
+}
 }
