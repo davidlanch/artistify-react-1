@@ -7,6 +7,17 @@ const router = new express.Router();
 const labelModel = require("../model/Label");
 const uploader = require("../config/cloudinary");
 
+
+router.post("/labels", (req, res) => {
+  console.log("req body", req.body)
+  labelModel.create(req.body)
+    .then((label) => {
+      res.status(201).json(label)  
+    }) .catch((err) => {
+      res.status(500).json(err)
+    })
+})
+
 router.get("/labels", (req, res) => {
   labelModel
     .find()
