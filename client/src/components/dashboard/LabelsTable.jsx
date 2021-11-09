@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import APIHandler from "../../api/handler";
+import { Link } from "react-router-dom";
 
 export default class LabelsTable extends Component {
   state = {
@@ -38,7 +39,7 @@ this.fetch()
     if (!this.state.elements) return <div className="loading">Loading...</div>;
     return (
       <>
-        <h1 className="title medium">Admin Labels + </h1>
+        <h1 className="title medium">Admin Labels<Link to="/admin/labels/create">+</Link></h1>
         <table className="table">
           <thead>
             <tr>
@@ -58,7 +59,7 @@ this.fetch()
                   <td> {element.country}</td>
                   <td> {element.city}</td>
                   <td>
-                    <i className="fas fa-edit" ></i>
+                    <Link to={"/admin/labels/" + element._id + "/edit"}><i className="fas fa-edit" ></i></Link>
                   </td>
                   <td>
                     <i className="fas fa-times" onClick={() => this.handleDelete(element._id)}></i>

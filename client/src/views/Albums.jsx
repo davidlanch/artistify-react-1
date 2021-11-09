@@ -13,7 +13,6 @@ export default class Albums extends Component {
   };
 
   async componentDidMount() {
-    console.log("hola", APIHandler);
     const x = await APIHandler.get("/api/albums");
     this.setState({
       albums: x.data,

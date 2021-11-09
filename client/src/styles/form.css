@@ -11,6 +11,7 @@
   align-items: center;
   justify-content: space-around;
   margin-bottom: 15px;
+
 }
 
 .form .row.justify-start {
@@ -19,6 +20,7 @@
 
 .form .label {
   cursor: pointer;
+  width: 200px;
 }
 
 .btn {
