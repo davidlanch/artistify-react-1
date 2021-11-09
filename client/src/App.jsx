@@ -44,7 +44,9 @@ export default function App() {
           <Route path="/admin/artists" component={ArtistsTable}/>
           <Route path="/admin/albums" component={AlbumsTable}/>
           <Route path="/admin/labels" component={LabelsTable}/>
-          <Route path="/admin/styles" component={StylesTable}/>           {/* <Route path="/admin/albums" render={(props) => {
+          <Route path="/admin/styles" component={StylesTable}/> 
+    
+                    {/* <Route path="/admin/albums" render={(props) => {
             return (<Table {...props} model="albums"/>)
           }}/>
            <Route path="/admin/labels" render={(props) => {
