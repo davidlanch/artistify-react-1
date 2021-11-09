@@ -51,21 +51,32 @@ export default function App() {
           <Route path="/albums/:id" component={Album} />
           <Route path="/contact-us" component={Contact} />
           <Route path="/dashboard" component={Dashboard} />
-          <Route path="/admin/artists" component={ArtistsTable}/>
+          <Route exact path="/admin/artists" component={ArtistsTable}/>
           <Route exact path="/admin/albums" component={AlbumsTable}/>
           <Route exact path="/admin/labels" component={LabelsTable}/>
           <Route exact path="/admin/styles" component={StylesTable}/>         
           
           {/* create and edit routes */}
-          <Route path="/admin/albums/create" component={NewAlbum} />
-          <Route path="/admin/artists/create" component={NewArtist} />
-          <Route path="/admin/styles/create" component={NewStyle} />
-          <Route path="/admin/labels/create" component={NewLabel} />
+          <Route exact path="/admin/albums/create" component={NewAlbum} />
+          <Route exact path="/admin/artists/create" component={NewArtist} />
+          <Route exact path="/admin/styles/create" component={NewStyle} />
+          <Route exact path="/admin/labels/create" component={NewLabel} />
 
           <Route path="/admin/albums/edit" component={EditAlbum} />
-          <Route path="/admin/artists/edit" component={EditArtist} />
+          
           <Route path="/admin/styles/:id/edit" component={EditStyle} />
           <Route path="/admin/labels/:id/edit" component={EditLabel} />
+          <Route
+                  path="/admin/artists/:id/edit"
+                  render={(props) => {
+                    console.log(props, 'props in app');
+                    return (
+                      <EditArtist
+                        {...props}
+                      />
+                    );
+                  }}
+                />
 
             {/* <Route path="/admin/albums" render={(props) => {
           return (<Table {...props} model="albums"/>)
