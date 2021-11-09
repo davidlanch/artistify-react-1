@@ -30,7 +30,7 @@ export default class NewAlbum extends Component {
             artists: responseArtists.data,
             labels: responseLabels.data,
             artist: responseArtists.data[0]._id,
-            label: responseLabels.data[0]._id,
+            label: responseLabels.data[0]._id
         })
         } catch (error) {console.error(error)}
   }
