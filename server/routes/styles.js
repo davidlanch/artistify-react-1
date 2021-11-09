@@ -16,6 +16,17 @@ router.post("/styles", (req, res) => {
     })
 })
 
+
+router.patch("/styles/:id/edit", (req, res) => {
+  console.log("req body", req.body)
+  styleModel.findByIdAndUpdate(req.params.id , req.body )
+    .then((style) => {
+      res.status(201).json(style)  
+    }) .catch((err) => {
+      res.status(500).json(err)
+    })
+})
+
 router.get("/styles", (req, res) => {
   styleModel.find()
   .then(styles => res.status(200).json(styles))
@@ -24,7 +35,7 @@ router.get("/styles", (req, res) => {
   })
 });
 
-router.get("/styles/:id", (req, res) => {
+router.get("/styles/:id([a-z0-9]{24})", (req, res) => {
   styleModel.findById(req.params.id)
   .then(style => res.status(200).json(style))
   .catch(err => {

@@ -19,7 +19,7 @@ router.get("/albums", (req, res) => {
     });
 });
 
-router.get("/albums/:id", (req, res) => {
+router.get("/albums/:id([a-z0-9]{24})", (req, res) => {
   albumModel
     .findById(req.params.id)
     .populate("artist label")
@@ -31,7 +31,6 @@ router.get("/albums/:id", (req, res) => {
 });
 
 router.post("/albums/create", uploader.single("cover"), (req, res) => {
-  console.log(req.file)
   albumModel.create({
     ...req.body,
     releaseDate: req.body.releaseDate || Date.now(),
@@ -39,6 +38,16 @@ router.post("/albums/create", uploader.single("cover"), (req, res) => {
   })
   .then((album) => res.status(201).json(album))
   .catch((err) => console.log("something went wrong with the album creation", err))
+})
+
+router.patch("/albums/:id([a-z0-9]{24})/edit", uploader.single("cover"), (req, res) => {
+  albumModel.findByIdAndUpdate(req.params.id, {
+    ...req.body,
+    releaseDate: req.body.releaseDate || Date.now(),
+    cover: req.file ? req.file.secure_url : "https://res.cloudinary.com/gdaconcept/image/upload/v1614649269/workshop-artistify/Drukqs__Front_Cover_ccmndb.png"
+  }, {new: true})
+  .then((album) => res.status(201).json(album))
+  .catch((err) => console.log("something went wrong with the album editing", err))
 })
 
 router.delete("/albums/:id", (req, res) => {

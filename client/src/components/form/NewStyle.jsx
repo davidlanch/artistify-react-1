@@ -37,12 +37,6 @@ export default class NewLabel extends Component {
             placeholder="name"
             onChange={this.handleChange}
           />
-          {/* <input
-            name="wikiURL"
-            type="text"
-            placeholder="wikiURL"
-            onChange={this.handleChange}
-          /> */}
           <input
             name="color"
             type="text"

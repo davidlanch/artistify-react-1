@@ -62,7 +62,11 @@ export default function App() {
           <Route exact path="/admin/styles/create" component={NewStyle} />
           <Route exact path="/admin/labels/create" component={NewLabel} />
 
+          <Route path="/admin/albums/:id/edit" component={EditAlbum} />
           <Route path="/admin/albums/edit" component={EditAlbum} />
+          
+          <Route path="/admin/styles/:id/edit" component={EditStyle} />
+          <Route path="/admin/labels/:id/edit" component={EditLabel} />
           <Route
                   path="/admin/artists/:id/edit"
                   render={(props) => {
@@ -74,8 +78,6 @@ export default function App() {
                     );
                   }}
                 />
-          <Route path="/admin/styles/edit" component={EditStyle} />
-          <Route path="/admin/labels/edit" component={EditLabel} />
 
             {/* <Route path="/admin/albums" render={(props) => {
           return (<Table {...props} model="albums"/>)

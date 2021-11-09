@@ -59,7 +59,7 @@ this.fetch()
                   <td> {element.country}</td>
                   <td> {element.city}</td>
                   <td>
-                    <i className="fas fa-edit" ></i>
+                    <Link to={"/admin/labels/" + element._id + "/edit"}><i className="fas fa-edit" ></i></Link>
                   </td>
                   <td>
                     <i className="fas fa-times" onClick={() => this.handleDelete(element._id)}></i>
