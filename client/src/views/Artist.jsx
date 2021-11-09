@@ -39,7 +39,7 @@ export default class Artists extends Component {
   }
 
   render () {
-    console.log("hola quetal", this.props)
+    console.log("REQ USER", this.props)
     if ( this.state.name === "") {
       return <p>loading</p>;
       
@@ -81,7 +81,8 @@ export default class Artists extends Component {
       </p>
 
       <LabPreview name="artist"/>
-      <Comment id={this.props.match.params.id}/>
+      <Comment idArtist={this.props.match.params.id} category="artist" />
+      
 
      
     </>
