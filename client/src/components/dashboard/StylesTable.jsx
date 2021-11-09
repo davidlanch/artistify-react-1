@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import APIHandler from "../../api/handler";
+import { Link } from "react-router-dom";
+
 
 export default class StylesTable extends Component {
   state = {
@@ -21,6 +23,7 @@ export default class StylesTable extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props)
 this.fetch()
   }
 
@@ -39,14 +42,12 @@ this.fetch()
     if (!this.state.elements) return <div className="loading">Loading...</div>;
     return (
       <>
-        <h1 className="title medium">Admin Styles + </h1>
+        <h1 className="title medium">Admin Styles<Link to="/admin/styles/create">+</Link></h1>
         <table className="table">
           <thead>
             <tr>
               <th>name</th>
               <th>color</th>
-
-    
               <th>edit</th>
               <th>trash</th>
             </tr>
@@ -58,7 +59,7 @@ this.fetch()
                   <td> {element.name}</td>
                   <td style={{backgroundColor: element.color}}> </td>
                   <td>
-                    <i className="fas fa-edit"></i>
+                    <Link to="/admin/styles/edit"><i className="fas fa-edit"></i></Link>
                   </td>
                   <td>
                     <i className="fas fa-times" onClick={() => this.handleDelete(element._id)}></i>

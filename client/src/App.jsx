@@ -53,8 +53,8 @@ export default function App() {
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/admin/artists" component={ArtistsTable}/>
           <Route path="/admin/albums" component={AlbumsTable}/>
-          <Route path="/admin/labels" component={LabelsTable}/>
-          <Route path="/admin/styles" component={StylesTable}/>         
+          <Route exact path="/admin/labels" component={LabelsTable}/>
+          <Route exact path="/admin/styles" component={StylesTable}/>         
           
           {/* create and edit routes */}
           <Route path="/admin/albums/create" component={NewAlbum} />
