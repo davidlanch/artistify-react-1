@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import APIHandler from "./../../api/handler";
 
-export default class NewLabel extends Component {
+export default class EditLabel extends Component {
   state = {
     name: " ",
     city: " ",
@@ -14,7 +14,7 @@ export default class NewLabel extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await APIHandler.patch("/api/labels" + this.props.id, this.state);
+      const res = await APIHandler.patch("/api/labels/" + this.props.match.params.id + "/edit", this.state);
       console.log(res.data)
     } catch (err) {
       console.error(err);
@@ -28,11 +28,11 @@ export default class NewLabel extends Component {
   };
 
   render() {
-    console.log(this.state);
+  
     return (
       <div>
         <form>
-          <h1>create a new label</h1>
+          <h1>Edit a label</h1>
           <input
             name="name"
             type="text"

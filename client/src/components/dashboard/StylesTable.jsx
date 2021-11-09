@@ -59,7 +59,7 @@ this.fetch()
                   <td> {element.name}</td>
                   <td style={{backgroundColor: element.color}}> </td>
                   <td>
-                    <Link to="/admin/styles/edit"><i className="fas fa-edit"></i></Link>
+                    <Link to={"/admin/styles/" + element._id + "/edit"}><i className="fas fa-edit"></i></Link>
                   </td>
                   <td>
                     <i className="fas fa-times" onClick={() => this.handleDelete(element._id)}></i>

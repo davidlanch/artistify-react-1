@@ -18,6 +18,17 @@ router.post("/labels", (req, res) => {
     })
 })
 
+
+router.patch("/labels/:id/edit", (req, res) => {
+  console.log("req body", req.body)
+  labelModel.findByIdAndUpdate(req.params.id , req.body )
+    .then((label) => {
+      res.status(201).json(label)  
+    }) .catch((err) => {
+      res.status(500).json(err)
+    })
+})
+
 router.get("/labels", (req, res) => {
   labelModel
     .find()
@@ -27,7 +38,7 @@ router.get("/labels", (req, res) => {
     });
 });
 
-router.get("/labels/:id", (req, res) => {
+router.get("/labels/:id([a-z0-9]{24})", (req, res) => {
   labelModel
     .findById(req.params.id)
     .then((label) => res.status(200).json(label))

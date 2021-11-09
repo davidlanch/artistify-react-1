@@ -64,8 +64,8 @@ export default function App() {
 
           <Route path="/admin/albums/edit" component={EditAlbum} />
           <Route path="/admin/artists/edit" component={EditArtist} />
-          <Route path="/admin/styles/edit" component={EditStyle} />
-          <Route path="/admin/labels/edit" component={EditLabel} />
+          <Route path="/admin/styles/:id/edit" component={EditStyle} />
+          <Route path="/admin/labels/:id/edit" component={EditLabel} />
 
             {/* <Route path="/admin/albums" render={(props) => {
           return (<Table {...props} model="albums"/>)
