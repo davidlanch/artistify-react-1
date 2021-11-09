@@ -5,6 +5,17 @@ const express = require("express");
 const router = new express.Router();
 const styleModel = require("../model/Style");
 
+
+router.post("/styles", (req, res) => {
+  console.log("req body", req.body)
+  styleModel.create(req.body)
+    .then((style) => {
+      res.status(201).json(style)  
+    }) .catch((err) => {
+      res.status(500).json(err)
+    })
+})
+
 router.get("/styles", (req, res) => {
   styleModel.find()
   .then(styles => res.status(200).json(styles))
