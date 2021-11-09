@@ -30,6 +30,17 @@ router.get("/albums/:id", (req, res) => {
     });
 });
 
+router.post("/albums/create", uploader.single("cover"), (req, res) => {
+  console.log(req.file)
+  albumModel.create({
+    ...req.body,
+    releaseDate: req.body.releaseDate || Date.now(),
+    cover: req.file ? req.file.secure_url : "https://res.cloudinary.com/gdaconcept/image/upload/v1614649269/workshop-artistify/Drukqs__Front_Cover_ccmndb.png"
+  })
+  .then((album) => res.status(201).json(album))
+  .catch((err) => console.log("something went wrong with the album creation", err))
+})
+
 router.delete("/albums/:id", (req, res) => {
   albumModel
     .findByIdAndDelete(req.params.id)

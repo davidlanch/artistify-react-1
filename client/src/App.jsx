@@ -52,7 +52,7 @@ export default function App() {
           <Route path="/contact-us" component={Contact} />
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/admin/artists" component={ArtistsTable}/>
-          <Route path="/admin/albums" component={AlbumsTable}/>
+          <Route exact path="/admin/albums" component={AlbumsTable}/>
           <Route path="/admin/labels" component={LabelsTable}/>
           <Route path="/admin/styles" component={StylesTable}/>         
           

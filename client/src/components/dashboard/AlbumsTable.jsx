@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import APIHandler from "./../../api/handler";
 
 export default class AlbumsTable extends Component {
@@ -39,7 +40,10 @@ this.fetch()
     if (!this.state.elements) return <div className="loading">Loading...</div>;
     return (
       <>
-        <h1 className="title medium">Admin Albums + </h1>
+        <h1 className="title medium">
+          Admin Albums 
+          <Link to="/admin/albums/create"> + </Link>
+          </h1>
         <table className="table">
           <thead>
             <tr>
