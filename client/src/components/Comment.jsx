@@ -52,16 +52,16 @@ export default class Comment extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("OUR STATE", this.state);
+    
     try {
-      await APIHandler.post(
-        "/api/comments/" +
-          this.state.category +
-          "/" +
-          this.state[this.state.category],
-        this.state
-      );
-      this.updateComments();
+        await APIHandler.post(
+          "/api/comments/" +
+            this.state.category +
+            "/" +
+            this.state[this.state.category],
+          this.state
+        );
+        this.updateComments();
     } catch (err) {
       console.error(err);
     }
@@ -92,11 +92,13 @@ export default class Comment extends Component {
         ) : (
           this.state.comments.map((comment, i) => {
             return (
-              <div className="comment" key={i}>
+              <div className="comment" key={comment._id}>
               <div className="date">{comment.date.slice(0, 10)} {comment.date.slice(11, 19)}{" "}</div>
                 <div className="author-infos">
-                <img className="avatar" src="" alt="" />
-                <b>{comment.author}</b></div>
+                  
+                <img className="avatar" src={comment.author?.avatar} alt="user-avatar" />
+                <b>{comment.author?.username}</b>
+                </div>
                 <div className="message">
         
                   {comment.message}
