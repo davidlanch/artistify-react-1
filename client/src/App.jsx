@@ -28,6 +28,11 @@ import HeaderMain from "./components/template/HeaderMain";
 import FooterMain from "./components/template/FooterMain";
 import NavMobile from "./components/nav/NavMobile";
 
+// auth
+import { ProtectedRoute } from "./auth/ProtectedRoute";
+import Signin from "./components/form/Signin";
+import Signup from "./components/form/Signup";
+
 export default function App() {
   const [navMobileStatus, setNavMobileStatus] = useState(false);
 
@@ -45,29 +50,32 @@ export default function App() {
       <main id="content_main">
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route path="/signin" component={Signin} />
+          <Route path="/signup" component={Signup} />
+
           <Route exact path="/artists" component={Artists} />
-          <Route path="/artists/:id" component={Artist} />
+          <ProtectedRoute path="/artists/:id" component={Artist} />
           <Route exact path="/albums" component={Albums} />
-          <Route path="/albums/:id" component={Album} />
+          <ProtectedRoute path="/albums/:id" component={Album} />
           <Route path="/contact-us" component={Contact} />
-          <Route path="/dashboard" component={Dashboard} />
-          <Route exact path="/admin/artists" component={ArtistsTable}/>
-          <Route exact path="/admin/albums" component={AlbumsTable}/>
-          <Route exact path="/admin/labels" component={LabelsTable}/>
-          <Route exact path="/admin/styles" component={StylesTable}/>         
+          <ProtectedRoute path="/dashboard" component={Dashboard} />
+          <ProtectedRoute exact path="/admin/artists" component={ArtistsTable}/>
+          <ProtectedRoute exact path="/admin/albums" component={AlbumsTable}/>
+          <ProtectedRoute exact path="/admin/labels" component={LabelsTable}/>
+          <ProtectedRoute exact path="/admin/styles" component={StylesTable}/>         
           
           {/* create and edit routes */}
-          <Route exact path="/admin/albums/create" component={NewAlbum} />
-          <Route exact path="/admin/artists/create" component={NewArtist} />
-          <Route exact path="/admin/styles/create" component={NewStyle} />
-          <Route exact path="/admin/labels/create" component={NewLabel} />
+          <ProtectedRoute exact path="/admin/albums/create" component={NewAlbum} />
+          <ProtectedRoute exact path="/admin/artists/create" component={NewArtist} />
+          <ProtectedRoute exact path="/admin/styles/create" component={NewStyle} />
+          <ProtectedRoute exact path="/admin/labels/create" component={NewLabel} />
 
-          <Route path="/admin/albums/:id/edit" component={EditAlbum} />
-          <Route path="/admin/albums/edit" component={EditAlbum} />
+          <ProtectedRoute path="/admin/albums/:id/edit" component={EditAlbum} />
+          <ProtectedRoute path="/admin/albums/edit" component={EditAlbum} />
           
-          <Route path="/admin/styles/:id/edit" component={EditStyle} />
-          <Route path="/admin/labels/:id/edit" component={EditLabel} />
-          <Route
+          <ProtectedRoute path="/admin/styles/:id/edit" component={EditStyle} />
+          <ProtectedRoute path="/admin/labels/:id/edit" component={EditLabel} />
+          <ProtectedRoute
                   path="/admin/artists/:id/edit"
                   render={(props) => {
                     console.log(props, 'props in app');

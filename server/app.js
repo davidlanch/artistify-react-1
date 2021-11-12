@@ -52,6 +52,10 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
+// passport init : these rules MUST set be after session setup (lines above)
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 //------------------------------------------
 // Fake Loggedin Users
@@ -98,6 +102,7 @@ const ratesRouter = require("./routes/rates.js");
 const stylesRouter = require("./routes/styles.js");
 const searchRouter = require("./routes/search.js");
 const usersRouter = require("./routes/users.js");
+const authRouter = require("./routes/auth.js");
 
 // D.R.Y : you may want to complete the prefixes just below (ex /api/artists or /api/labels )
 
@@ -110,5 +115,8 @@ app.use("/api", ratesRouter);
 app.use("/api", searchRouter);
 app.use("/api", stylesRouter);
 app.use("/api", usersRouter);
+app.use(authRouter);
+
+
 
 module.exports = app;

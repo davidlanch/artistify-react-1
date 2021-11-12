@@ -7,7 +7,7 @@ const router = new express.Router();
 const commentModel = require("../model/Comment");
 
 router.get("/comments/:type/:id", (req, res, next) => {
-  commentModel.find({[req.params.type]: req.params.id }).populate("artist album label style")
+  commentModel.find({[req.params.type]: req.params.id }).populate("author artist album label style")
   .then((comments) => {
     console.log(comments);
     res.status(200).json(comments)
@@ -22,9 +22,9 @@ router.post("/comments/:type/:id", async (req, res, next) => {
   
   const newObject = req.body
   newObject.author = req.user
-  // console.log('NEW OBJECT', newObject)
+  console.log('REQ USEEEER', req.user)
   commentModel.create(newObject)
-  .then((ok) => res.status(200).json({ msg: "@todo" }))
+  .then((newComment) => res.status(200).json({newComment}))
   .catch((error) => console.error(error))
   
 });

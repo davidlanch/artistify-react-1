@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import APIHandler from "../api/handler";
 import LabPreview from "../components/preview/LabPreview";
 import Comment from "../components/Comment";
+import RatingStars from "./../components/icon/RatingStars";
 // styles
 import "./../styles/artist.css";
 import "./../styles/comment.css";
@@ -51,7 +52,7 @@ export default class Artists extends Component {
       music style: {this.state.style}<br/>
       {this.state.description}
       </p>
-
+      <RatingStars category="artist" id={this.props.match.params.id} />
       <h1 className="title diy">D.I.Y (Stars)</h1>
       <p>
         The Stars component allow the end-users to rate an artist/album.

@@ -1,3 +1,28 @@
 .user.stars {
+    display: flex;
     color: darkorange;
+    flex-direction: row-reverse;
 }
+
+/* fas etoile pleine
+far etoile vide */
+
+.one-star .fas {
+    display: none;
+}
+
+.one-star:hover .fas,
+.one-star:hover ~ .one-star .fas {
+    display: inline-block
+}
+
+.one-star:hover .far,
+.one-star:hover ~ .one-star .far {
+    display: none;
+}
+
+
+
+
+
+
